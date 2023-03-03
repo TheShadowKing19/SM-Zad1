@@ -60,8 +60,9 @@ if __name__ == '__main__':
     axs['b'].imshow(b, cmap='gray')
     axs['b'].set_title("b")
 
+    # img3[:, :, 1] = 0
     R = img3[:, :, 0] + 0 * img3[:, :, 1] + 0 * img3[:, :, 2]
-    axs['R'].imshow(R, cmap="Reds")
+    axs['R'].imshow(R)
     axs['R'].set_title("R")
 
     G = 0 * img3[:, :, 0] + img3[:, :, 1] + 0 * img3[:, :, 2]
