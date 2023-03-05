@@ -61,16 +61,20 @@ if __name__ == '__main__':
     axs['b'].set_title("b")
 
     # img3[:, :, 1] = 0
-    R = img3[:, :, 0] + 0 * img3[:, :, 1] + 0 * img3[:, :, 2]
+    R = img3.copy()
+    R[:, :, 1:3] = 0
     axs['R'].imshow(R)
     axs['R'].set_title("R")
 
-    G = 0 * img3[:, :, 0] + img3[:, :, 1] + 0 * img3[:, :, 2]
-    axs['G'].imshow(G, cmap="Greens")
+    G = img3.copy()
+    G[:, :, -1] = 0
+    G[:, :, -3] = 0
+    axs['G'].imshow(G)
     axs['G'].set_title("G")
 
-    B = 0 * img3[:, :, 0] + 0 * img3[:, :, 1] + img3[:, :, 2]
-    axs['B'].imshow(B, cmap="Blues")
+    B = img3.copy()
+    B[:, :, 0:2] = 0
+    axs['B'].imshow(B)
     axs['B'].set_title("B")
     plt.show()
 
@@ -90,6 +94,7 @@ if __name__ == '__main__':
     ax3['Tecza'].set_title("Oryginalna")
     ax3['wycinek'].imshow(fragment)
     ax3['wycinek'].set_title("Wycinek tęczy")
+    plt.imsave("Fragment.png", fragment)
     plt.show()
 
 
